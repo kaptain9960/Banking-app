@@ -4,7 +4,8 @@ from .transfare import search_using_account, AmountTranfare, AmountTranfareProce
 from .transaction import transaction_list, transaction_detail
 from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess, RequestConfirmation, RequestCompleted, RequestFinialProcess, settlement_confirmation, settlement_processing, SettlementCompleted, delete_payment_request
 from .credit_card import credit_card_detail, fund_credit_card, withdraw_credit_card, delete_card
-
+from . import views
+from .views import about
 
 app_name = 'core'
 
@@ -47,8 +48,10 @@ urlpatterns = [
     path('fund-credit-card/<card_id>/',fund_credit_card, name= "fund-credit-card" ),
     path('withdraw-credit-card/<card_id>/',withdraw_credit_card, name= "withdraw-credit-card" ),
     path('delete-credit-card/<card_id>/',delete_card, name= "delete-card" ),
+    path('payments/', views.payments, name='payments'),
 
-
+    # added pages
+    path('about', about, name='about'),
 
 
 ]

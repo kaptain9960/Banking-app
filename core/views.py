@@ -5,3 +5,10 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'core/index.html')
+
+def payments(request):
+    return render(request, 'payments.html')
+
+
+def about(request):
+    return render(request, 'about.html')

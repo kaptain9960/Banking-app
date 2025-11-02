@@ -10,6 +10,6 @@ urlpatterns = [
     path("dashboard",Dashboard , name='dashboard'),
 
     path("kyc-reg/",kyc_registration, name='kyc-reg'),
-  
+    
 
 ]
