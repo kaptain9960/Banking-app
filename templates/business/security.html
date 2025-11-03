@@ -1,1 +1,217 @@
-security
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-3">Security Settings</h1>
+                <p class="lead text-muted">Protect your account with advanced security features</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-success mb-3">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5 class="card-title">Security Score</h5>
+                        <h2 class="text-success">85%</h2>
+                        <p class="text-muted">Very Good</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-primary mb-3">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h5 class="card-title">2FA Status</h5>
+                        <h2 class="text-primary">Enabled</h2>
+                        <p class="text-muted">Extra protection</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-info mb-3">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h5 class="card-title">Last Login</h5>
+                        <h2 class="text-info">Today</h2>
+                        <p class="text-muted">10:30 AM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Account Security</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                            <div>
+                                <h6 class="mb-1">Two-Factor Authentication</h6>
+                                <small class="text-muted">Add an extra layer of security to your account</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                            <div>
+                                <h6 class="mb-1">Biometric Authentication</h6>
+                                <small class="text-muted">Use fingerprint or face recognition</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                            <div>
+                                <h6 class="mb-1">Login Alerts</h6>
+                                <small class="text-muted">Get notified of new login attempts</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3">
+                            <div>
+                                <h6 class="mb-1">Transaction Notifications</h6>
+                                <small class="text-muted">Receive alerts for all transactions</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Password & PIN</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <button class="btn btn-outline-primary w-100 mb-2">
+                                <i class="fas fa-key me-2"></i>Change Password
+                            </button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fas fa-hashtag me-2"></i>Change PIN
+                            </button>
+                        </div>
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Last password change: 30 days ago
+                        </small>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Active Sessions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start py-3 border-bottom">
+                            <div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-desktop text-primary me-2"></i>
+                                    <h6 class="mb-0">Windows Desktop</h6>
+                                </div>
+                                <small class="text-muted d-block">Chrome Browser</small>
+                                <small class="text-muted">Lagos, Nigeria - Current Session</small>
+                            </div>
+                            <span class="badge bg-success">Active</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start py-3">
+                            <div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-mobile-alt text-primary me-2"></i>
+                                    <h6 class="mb-0">iPhone 12</h6>
+                                </div>
+                                <small class="text-muted d-block">Safari Browser</small>
+                                <small class="text-muted">Lagos, Nigeria - 2 hours ago</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger">End Session</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Security Tips</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info border-0">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            <small>Use a strong password with at least 12 characters</small>
+                        </div>
+                        <div class="alert alert-warning border-0">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <small>Enable 2FA for maximum security</small>
+                        </div>
+                        <div class="alert alert-success border-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <small>Review login activity regularly</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 pb-3 border-bottom">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-sign-in-alt text-success mt-1 me-2"></i>
+                                    <div>
+                                        <small class="d-block fw-bold">Login Successful</small>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="mb-3 pb-3 border-bottom">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-key text-primary mt-1 me-2"></i>
+                                    <div>
+                                        <small class="d-block fw-bold">Password Changed</small>
+                                        <small class="text-muted">30 days ago</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="mb-0">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-shield-alt text-info mt-1 me-2"></i>
+                                    <div>
+                                        <small class="d-block fw-bold">2FA Enabled</small>
+                                        <small class="text-muted">45 days ago</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

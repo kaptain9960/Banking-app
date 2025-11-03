@@ -1,0 +1,59 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Our Blog</h1>
+        <p class="lead">Insights, updates, and stories from the Paylio team</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article class="card shadow-sm mb-4">
+                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Blog post">
+                    <div class="card-body p-4">
+                        <div class="mb-2">
+                            <span class="badge bg-primary">Product</span>
+                            <span class="text-muted ms-2">Nov 3, 2025</span>
+                        </div>
+                        <h3><a href="{% url 'blog-details' %}" class="text-decoration-none text-dark">Introducing Our New Dashboard</a></h3>
+                        <p class="text-muted">We're excited to announce the launch of our redesigned dashboard with powerful new features...</p>
+                        <a href="{% url 'blog-details' %}" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card shadow-sm mb-4">
+                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Blog post">
+                    <div class="card-body p-4">
+                        <div class="mb-2">
+                            <span class="badge bg-success">Technology</span>
+                            <span class="text-muted ms-2">Nov 1, 2025</span>
+                        </div>
+                        <h3><a href="{% url 'blog-details' %}" class="text-decoration-none text-dark">How We Built Our Payment Infrastructure</a></h3>
+                        <p class="text-muted">A deep dive into the technology stack that powers millions of transactions...</p>
+                        <a href="{% url 'blog-details' %}" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="mb-4">Categories</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-decoration-none">Product Updates</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none">Technology</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none">Company News</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none">Customer Stories</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

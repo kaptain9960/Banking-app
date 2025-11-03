@@ -1,1 +1,57 @@
-blog details
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<article class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog</a></li>
+                        <li class="breadcrumb-item active">Blog Post Title</li>
+                    </ol>
+                </nav>
+
+                <div class="mb-4">
+                    <span class="badge bg-primary">Product</span>
+                    <span class="text-muted ms-2">Nov 3, 2025 • 5 min read</span>
+                </div>
+
+                <h1 class="display-5 fw-bold mb-4">Introducing Our New Dashboard</h1>
+                
+                <img src="https://via.placeholder.com/800x400" class="img-fluid rounded mb-4" alt="Blog featured image">
+
+                <div class="blog-content">
+                    <p class="lead">We're excited to announce the launch of our completely redesigned dashboard, packed with powerful new features to help you manage your business finances more effectively.</p>
+
+                    <p>After months of development and testing with our beta users, we're thrilled to roll out these updates to everyone. Here's what's new:</p>
+
+                    <h3 class="mt-5 mb-3">Enhanced Analytics</h3>
+                    <p>Our new analytics dashboard provides deeper insights into your financial data with interactive charts and customizable reports.</p>
+
+                    <h3 class="mt-5 mb-3">Improved Performance</h3>
+                    <p>We've optimized the entire platform for speed, resulting in 3x faster load times and smoother interactions.</p>
+
+                    <h3 class="mt-5 mb-3">Mobile-First Design</h3>
+                    <p>The new interface is fully responsive and optimized for mobile devices, so you can manage your finances on the go.</p>
+
+                    <div class="alert alert-info mt-5">
+                        <strong>Want to learn more?</strong> Check out our <a href="#">documentation</a> or <a href="#">contact support</a>.
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-5 border-top">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/60" class="rounded-circle me-3" alt="Author">
+                        <div>
+                            <h6 class="mb-0">John Doe</h6>
+                            <small class="text-muted">Product Manager</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}

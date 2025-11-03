@@ -1,1 +1,52 @@
-integration
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-gradient" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container text-white text-center">
+        <h1 class="display-3 fw-bold mb-4">Seamless Integrations</h1>
+        <p class="lead">Connect with your favorite tools and platforms</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">Popular Integrations</h2>
+            <p class="lead text-muted">Connect your business tools in minutes</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-calculator fa-4x text-success mb-3"></i>
+                        <h4>QuickBooks</h4>
+                        <p class="text-muted">Sync transactions and accounting data</p>
+                        <button class="btn btn-outline-success">Connect</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-file-invoice fa-4x text-primary mb-3"></i>
+                        <h4>Xero</h4>
+                        <p class="text-muted">Real-time accounting integration</p>
+                        <button class="btn btn-outline-primary">Connect</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-slack fa-4x text-danger mb-3"></i>
+                        <h4>Slack</h4>
+                        <p class="text-muted">Get notifications in Slack channels</p>
+                        <button class="btn btn-outline-danger">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

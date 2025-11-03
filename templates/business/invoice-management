@@ -1,1 +1,91 @@
-invoice
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Invoice Management</h1>
+                <p class="lead">Create, send, and track professional invoices</p>
+                <button class="btn btn-primary btn-lg">Create Invoice</button>
+            </div>
+            <div class="col-lg-6">
+                <i class="fas fa-file-invoice fa-10x text-primary opacity-25"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-primary">45</h3>
+                        <p class="text-muted mb-0">Total Invoices</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-success">$125,450</h3>
+                        <p class="text-muted mb-0">Paid</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-warning">$25,300</h3>
+                        <p class="text-muted mb-0">Pending</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-danger">$5,200</h3>
+                        <p class="text-muted mb-0">Overdue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <div class="d-flex justify-content-between">
+                    <h5 class="mb-0">Recent Invoices</h5>
+                    <button class="btn btn-sm btn-primary">New Invoice</button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Invoice #</th>
+                            <th>Client</th>
+                            <th>Amount</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#INV-001</td>
+                            <td>Acme Corp</td>
+                            <td>$5,250.00</td>
+                            <td>Nov 15, 2025</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

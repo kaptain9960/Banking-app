@@ -1,1 +1,209 @@
-expense management
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
+    <div class="container text-white">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="display-3 fw-bold mb-4">Expense Management Made Simple</h1>
+                <p class="lead mb-4">Automate expense tracking, approval workflows, and reimbursements</p>
+                <button class="btn btn-light btn-lg px-5">Start Free Trial</button>
+            </div>
+            <div class="col-lg-5">
+                <div class="text-center">
+                    <i class="fas fa-receipt fa-10x opacity-25"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Complete Expense Solution</h2>
+            <p class="lead text-muted">From submission to reimbursement in minutes</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="fas fa-camera fa-2x text-primary"></i>
+                        </div>
+                        <h4>Snap & Submit</h4>
+                        <p class="text-muted">Take a photo of your receipt and AI automatically extracts all details</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>OCR technology</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Auto-categorization</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-currency support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="fas fa-check-double fa-2x text-success"></i>
+                        </div>
+                        <h4>Automated Approvals</h4>
+                        <p class="text-muted">Set up custom approval workflows based on amount, category, or department</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-level approvals</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Policy enforcement</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Delegate approvers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="fas fa-money-bill-wave fa-2x text-info"></i>
+                        </div>
+                        <h4>Fast Reimbursements</h4>
+                        <p class="text-muted">Get employees reimbursed quickly via direct deposit or corporate card</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Same-day processing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bulk payments</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Payment tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Expense Dashboard</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center mb-4">
+                            <div class="col-4">
+                                <h3 class="text-primary mb-0">$12,450</h3>
+                                <small class="text-muted">This Month</small>
+                            </div>
+                            <div class="col-4">
+                                <h3 class="text-warning mb-0">15</h3>
+                                <small class="text-muted">Pending</small>
+                            </div>
+                            <div class="col-4">
+                                <h3 class="text-success mb-0">142</h3>
+                                <small class="text-muted">Approved</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Travel</span>
+                                <span class="fw-bold">$4,200</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-primary" style="width: 34%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Meals</span>
+                                <span class="fw-bold">$2,800</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-success" style="width: 22%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Software</span>
+                                <span class="fw-bold">$3,650</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-info" style="width: 29%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-4">Real-Time Visibility</h2>
+                <p class="lead mb-4">Track spending across teams, projects, and departments</p>
+                <div class="mb-3">
+                    <h5><i class="fas fa-chart-pie text-primary me-2"></i>Smart Analytics</h5>
+                    <p class="text-muted">Understand spending patterns with detailed reports and insights</p>
+                </div>
+                <div class="mb-3">
+                    <h5><i class="fas fa-filter text-success me-2"></i>Custom Reports</h5>
+                    <p class="text-muted">Filter by date, employee, department, project, or category</p>
+                </div>
+                <div class="mb-3">
+                    <h5><i class="fas fa-download text-info me-2"></i>Export Options</h5>
+                    <p class="text-muted">Download reports in CSV, Excel, or PDF formats</p>
+                </div>
+                <div class="mb-3">
+                    <h5><i class="fas fa-plug text-warning me-2"></i>Accounting Integration</h5>
+                    <p class="text-muted">Sync with QuickBooks, Xero, NetSuite, and more</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-5">Policy Compliance</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4"><i class="fas fa-shield-alt text-primary me-2"></i>Enforce Policies</h4>
+                        <p>Set spending rules and limits that automatically flag violations</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Per-diem limits</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Category restrictions</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Mileage tracking</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Receipt requirements</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Out-of-policy alerts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4"><i class="fas fa-users text-success me-2"></i>Team Collaboration</h4>
+                        <p>Work together seamlessly on expense reports and approvals</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Comments & notes</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>@mentions</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Audit trail</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Split expenses</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Delegation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold mb-3">Ready to simplify expense management?</h2>
+                <p class="lead mb-0">Start your 30-day free trial today. No credit card required.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <button class="btn btn-primary btn-lg px-5">Start Free Trial</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

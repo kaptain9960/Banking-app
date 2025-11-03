@@ -1,1 +1,77 @@
-budget analytics
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Budgeting & Analytics</h1>
+        <p class="lead">Make data-driven financial decisions with powerful analytics</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-dollar-sign fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">$125,450</h3>
+                        <p class="text-muted">Total Revenue</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                        <h3 class="text-success">+15.3%</h3>
+                        <p class="text-muted">Growth</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-wallet fa-3x text-info mb-3"></i>
+                        <h3 class="text-info">$85,200</h3>
+                        <p class="text-muted">Expenses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-piggy-bank fa-3x text-warning mb-3"></i>
+                        <h3 class="text-warning">$40,250</h3>
+                        <p class="text-muted">Net Profit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Revenue vs Expenses</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="revenueChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Budget Allocation</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="budgetPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

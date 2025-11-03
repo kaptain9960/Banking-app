@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'assets/images/fav.png' %}" type="image/x-icon">
     <title>EazyPay - Money Transfer and Online Payments</title>
 
     <link rel="shortcut icon" href="{% static 'assets11/images/fav.png' %}" type="image/x-icon">
@@ -164,7 +165,7 @@
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                         <div class="sidebar-logo">
-                            <a href="dashboard.html"><img src="{% static 'assets1/images/logo.png' %}" alt="logo"></a>
+                            <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/logo.png' %}" alt="logo"></a>
                         </div>
                         <ul>
                             <li>
