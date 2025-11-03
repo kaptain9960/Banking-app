@@ -1,0 +1,245 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-3">Manage Your Subscriptions</h1>
+                <p class="lead text-muted">Keep track of all your recurring payments in one place</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-primary mb-3">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h5 class="card-title">Active Subscriptions</h5>
+                        <h2 class="text-primary">12</h2>
+                        <p class="text-muted">Currently active</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-success mb-3">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h5 class="card-title">Monthly Spending</h5>
+                        <h2 class="text-success">$249.99</h2>
+                        <p class="text-muted">Per month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center">
+                        <div class="display-4 text-warning mb-3">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h5 class="card-title">Upcoming Renewals</h5>
+                        <h2 class="text-warning">3</h2>
+                        <p class="text-muted">Next 7 days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4 class="mb-0">Your Subscriptions</h4>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Add Subscription
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Service</th>
+                                <th>Amount</th>
+                                <th>Billing Cycle</th>
+                                <th>Next Payment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                            <i class="fas fa-film text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold">Netflix Premium</div>
+                                            <small class="text-muted">Entertainment</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle fw-bold">$15.99</td>
+                                <td class="align-middle">Monthly</td>
+                                <td class="align-middle">Dec 15, 2024</td>
+                                <td class="align-middle">
+                                    <span class="badge bg-success">Active</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-sm btn-outline-primary me-2">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-success bg-opacity-10 rounded p-2 me-3">
+                                            <i class="fas fa-music text-success"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold">Spotify Premium</div>
+                                            <small class="text-muted">Music</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle fw-bold">$9.99</td>
+                                <td class="align-middle">Monthly</td>
+                                <td class="align-middle">Dec 20, 2024</td>
+                                <td class="align-middle">
+                                    <span class="badge bg-success">Active</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-sm btn-outline-primary me-2">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-info bg-opacity-10 rounded p-2 me-3">
+                                            <i class="fas fa-cloud text-info"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold">Cloud Storage Pro</div>
+                                            <small class="text-muted">Storage</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle fw-bold">$19.99</td>
+                                <td class="align-middle">Monthly</td>
+                                <td class="align-middle">Dec 10, 2024</td>
+                                <td class="align-middle">
+                                    <span class="badge bg-success">Active</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-sm btn-outline-primary me-2">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Spending by Category</h5>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Entertainment</span>
+                                <span class="fw-bold">$45.97</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-primary" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Productivity</span>
+                                <span class="fw-bold">$89.98</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-success" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Storage</span>
+                                <span class="fw-bold">$29.99</span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-info" style="width: 23%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Upcoming Payments</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 pb-3 border-bottom">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="fw-bold">Cloud Storage Pro</div>
+                                        <small class="text-muted">Dec 10, 2024</small>
+                                    </div>
+                                    <span class="fw-bold text-primary">$19.99</span>
+                                </div>
+                            </li>
+                            <li class="mb-3 pb-3 border-bottom">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="fw-bold">Netflix Premium</div>
+                                        <small class="text-muted">Dec 15, 2024</small>
+                                    </div>
+                                    <span class="fw-bold text-primary">$15.99</span>
+                                </div>
+                            </li>
+                            <li class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="fw-bold">Spotify Premium</div>
+                                        <small class="text-muted">Dec 20, 2024</small>
+                                    </div>
+                                    <span class="fw-bold text-primary">$9.99</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

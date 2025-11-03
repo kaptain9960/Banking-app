@@ -1,0 +1,48 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Business Banking Solutions</h1>
+        <p class="lead">Everything your business needs in one account</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
+                        <h4>Business Checking</h4>
+                        <p>No monthly fees with unlimited transactions</p>
+                        <button class="btn btn-outline-primary">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                        <h4>Business Savings</h4>
+                        <p>Earn competitive interest rates</p>
+                        <button class="btn btn-outline-success">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-credit-card fa-3x text-info mb-3"></i>
+                        <h4>Business Credit</h4>
+                        <p>Flexible credit solutions for growth</p>
+                        <button class="btn btn-outline-info">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-3">Transparent Pricing</h1>
+                <p class="lead">Simple, fair fees with no hidden charges</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center h-100">
+                    <div class="card-body">
+                        <div class="display-1 text-success mb-3">$0</div>
+                        <h4>Account Opening</h4>
+                        <p class="text-muted">Open your account for free</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center h-100">
+                    <div class="card-body">
+                        <div class="display-1 text-success mb-3">$0</div>
+                        <h4>Monthly Maintenance</h4>
+                        <p class="text-muted">No monthly fees</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 text-center h-100">
+                    <div class="card-body">
+                        <div class="display-1 text-success mb-3">$0</div>
+                        <h4>Internal Transfers</h4>
+                        <p class="text-muted">Transfer between accounts for free</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white py-3">
+                <h4 class="mb-0">Transaction Fees</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Transaction Type</th>
+                                <th>Fee</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-exchange-alt text-primary me-2"></i>Domestic Transfer</td>
+                                <td><span class="badge bg-success">FREE</span></td>
+                                <td>Within the country</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-globe text-primary me-2"></i>International Transfer</td>
+                                <td><span class="fw-bold text-primary">$5.00</span></td>
+                                <td>Flat fee per transaction</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-money-check-alt text-primary me-2"></i>Wire Transfer</td>
+                                <td><span class="fw-bold text-primary">$15.00</span></td>
+                                <td>Domestic wire transfers</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-credit-card text-primary me-2"></i>ATM Withdrawal</td>
+                                <td><span class="badge bg-success">FREE</span></td>
+                                <td>First 5 per month, $2.50 thereafter</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-file-invoice-dollar text-primary me-2"></i>Stop Payment</td>
+                                <td><span class="fw-bold text-primary">$25.00</span></td>
+                                <td>Per request</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-undo text-primary me-2"></i>Returned Payment</td>
+                                <td><span class="fw-bold text-primary">$30.00</span></td>
+                                <td>Insufficient funds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white py-3">
+                <h4 class="mb-0">Card Fees</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Service</th>
+                                <th>Fee</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-credit-card text-primary me-2"></i>Debit Card Issuance</td>
+                                <td><span class="badge bg-success">FREE</span></td>
+                                <td>First card free</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-sync text-primary me-2"></i>Card Replacement</td>
+                                <td><span class="fw-bold text-primary">$5.00</span></td>
+                                <td>Lost or damaged cards</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-plane text-primary me-2"></i>Foreign Transaction</td>
+                                <td><span class="fw-bold text-primary">2.5%</span></td>
+                                <td>Of transaction amount</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-money-bill-wave text-primary me-2"></i>Cash Advance</td>
+                                <td><span class="fw-bold text-primary">$10.00</span></td>
+                                <td>Plus 3% of amount</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4"><i class="fas fa-shield-alt text-success me-2"></i>Fee Waivers</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Maintain $1,000 minimum balance
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Set up direct deposit of $500+
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Students get all fees waived
+                            </li>
+                            <li class="mb-0">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Senior citizens (65+) eligible for discounts
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4"><i class="fas fa-question-circle text-primary me-2"></i>Have Questions?</h5>
+                        <p>Our customer service team is here to help you understand our fee structure.</p>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'help-center' %}" class="btn btn-primary">
+                                <i class="fas fa-headset me-2"></i>Contact Support
+                            </a>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-download me-2"></i>Download Fee Schedule
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info border-0 mt-4">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Note:</strong> Fees are subject to change. Please check this page regularly for updates or contact customer service for the most current information.
+        </div>
+    </div>
+</section>
+{% endblock %}

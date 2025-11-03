@@ -1,0 +1,55 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'help-center' %}">Help Center</a></li>
+                <li class="breadcrumb-item active">Account Management</li>
+            </ol>
+        </nav>
+        <h1 class="display-5 fw-bold">Account Management</h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body p-4">
+                        <h5><i class="fas fa-question-circle text-primary me-2"></i>How do I update my profile information?</h5>
+                        <p class="text-muted mb-0">Learn how to edit your personal details and contact information</p>
+                    </div>
+                </div>
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body p-4">
+                        <h5><i class="fas fa-question-circle text-primary me-2"></i>How do I change my password?</h5>
+                        <p class="text-muted mb-0">Step-by-step guide to updating your account password</p>
+                    </div>
+                </div>
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body p-4">
+                        <h5><i class="fas fa-question-circle text-primary me-2"></i>How do I enable two-factor authentication?</h5>
+                        <p class="text-muted mb-0">Secure your account with 2FA setup instructions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Related Categories</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#">Security Settings</a></li>
+                            <li class="mb-2"><a href="#">Payment Methods</a></li>
+                            <li class="mb-2"><a href="#">Notifications</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

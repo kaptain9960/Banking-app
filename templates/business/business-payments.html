@@ -1,0 +1,242 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-gradient" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-white">
+                <h1 class="display-4 fw-bold mb-3">Business Payments Made Simple</h1>
+                <p class="lead mb-4">Streamline your business transactions with our powerful payment solutions</p>
+                <button class="btn btn-light btn-lg">Get Started</button>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4">Payment Overview</h4>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="p-3 bg-light rounded text-center">
+                                    <h3 class="text-primary mb-0">$125,450</h3>
+                                    <small class="text-muted">This Month</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 bg-light rounded text-center">
+                                    <h3 class="text-success mb-0">342</h3>
+                                    <small class="text-muted">Transactions</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-4 mb-3">
+                            <i class="fas fa-bolt fa-3x text-primary"></i>
+                        </div>
+                        <h4>Instant Payments</h4>
+                        <p class="text-muted">Process payments in real-time with instant settlement</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex p-4 mb-3">
+                            <i class="fas fa-globe fa-3x text-success"></i>
+                        </div>
+                        <h4>Global Reach</h4>
+                        <p class="text-muted">Accept payments from customers worldwide</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex p-4 mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-info"></i>
+                        </div>
+                        <h4>Secure & Compliant</h4>
+                        <p class="text-muted">Bank-level security with full regulatory compliance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header bg-white py-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="mb-0">Recent Transactions</h4>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-sm btn-primary">New Payment</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Client</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nov 02, 2025</td>
+                                        <td>
+                                            <div class="fw-bold">Acme Corp</div>
+                                            <small class="text-muted">Invoice #1234</small>
+                                        </td>
+                                        <td class="fw-bold">$5,250.00</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nov 01, 2025</td>
+                                        <td>
+                                            <div class="fw-bold">TechStart LLC</div>
+                                            <small class="text-muted">Invoice #1233</small>
+                                        </td>
+                                        <td class="fw-bold">$8,900.00</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 31, 2025</td>
+                                        <td>
+                                            <div class="fw-bold">Global Industries</div>
+                                            <small class="text-muted">Invoice #1232</small>
+                                        </td>
+                                        <td class="fw-bold">$12,750.00</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white py-3">
+                        <h4 class="mb-0">Payment Methods</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <i class="fas fa-credit-card fa-2x text-primary mb-2"></i>
+                                    <h5>Credit/Debit Cards</h5>
+                                    <p class="text-muted mb-0">Accept all major card brands</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <i class="fas fa-university fa-2x text-success mb-2"></i>
+                                    <h5>Bank Transfers</h5>
+                                    <p class="text-muted mb-0">Direct account-to-account transfers</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <i class="fas fa-mobile-alt fa-2x text-info mb-2"></i>
+                                    <h5>Digital Wallets</h5>
+                                    <p class="text-muted mb-0">Apple Pay, Google Pay, and more</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <i class="fas fa-globe fa-2x text-warning mb-2"></i>
+                                    <h5>International</h5>
+                                    <p class="text-muted mb-0">Multi-currency support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Quick Actions</h5>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Send Payment
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-file-invoice me-2"></i>Create Invoice
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-link me-2"></i>Payment Link
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-download me-2"></i>Export Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Payment Analytics</h5>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Success Rate</span>
+                                <span class="fw-bold">98.5%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 98.5%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Avg. Processing Time</span>
+                                <span class="fw-bold">2.3s</span>
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Monthly Volume</span>
+                                <span class="fw-bold">$125,450</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 bg-primary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Need Help?</h5>
+                        <p class="mb-3">Our business support team is available 24/7</p>
+                        <button class="btn btn-light w-100">Contact Support</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

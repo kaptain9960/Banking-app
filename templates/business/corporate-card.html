@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Corporate Cards</h1>
+        <p class="lead">Empower your team with smart spending cards</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h3>Virtual Cards</h3>
+                        <p>Create instant virtual cards for online purchases</p>
+                        <ul>
+                            <li>Unlimited virtual cards</li>
+                            <li>Set spending limits</li>
+                            <li>Single-use or recurring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4">
+                        <h3>Physical Cards</h3>
+                        <p>Traditional corporate cards for your team</p>
+                        <ul>
+                            <li>Employee cards</li>
+                            <li>Custom spending controls</li>
+                            <li>Real-time notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
