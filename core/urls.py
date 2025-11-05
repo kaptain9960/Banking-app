@@ -24,7 +24,7 @@ urlpatterns = [
     path('withdraw_money/',views.withdraw_money, name='withdraw_money' ),
 
     # Payment Request
-    path('request-search-user/',SearchUserRequest, name='request-search-user' ),
+    path('request-search-user/',views.request_search_user, name='request-search-user' ),
     path('amount-request/<account_number>',AmountRequest, name='amount-request' ),
     path('amount-request-process/<account_number>/',AmountRequestProcess , name='amount-request-Process'),
     path('request-confirm/<account_number>/<transaction_id>/',RequestConfirmation , name='request-confirmation'),
@@ -55,9 +55,11 @@ urlpatterns = [
     path('budgeting-analytics/', views.budgeting_analytics, name='budgeting-analytics'),
     path('integrations/', views.integrations, name='integrations'),
     path('invoice-management/', views.invoice_management, name='invoice-management'),
-    path('business-security/', views.business_security, name='business-security'),
     path('rewards/', views.rewards, name='rewards'),
     path('business-fees/', views.business_fees, name='business-fees'),
+
+    #added this newly
+    path('business-security/', views.business_security, name = 'business-security'),
 
     # Company Pages
     path('about/', about, name='about'),

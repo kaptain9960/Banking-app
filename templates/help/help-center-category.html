@@ -6,7 +6,7 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'help-center' %}">Help Center</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'core:help-center' %}">Help Center</a></li>
                 <li class="breadcrumb-item active">Account Management</li>
             </ol>
         </nav>
@@ -42,6 +42,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Related Categories</h5>
                         <ul class="list-unstyled">
+
+                            <!-- reference this page -->
                             <li class="mb-2"><a href="#">Security Settings</a></li>
                             <li class="mb-2"><a href="#">Payment Methods</a></li>
                             <li class="mb-2"><a href="#">Notifications</a></li>

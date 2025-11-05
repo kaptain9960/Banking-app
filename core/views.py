@@ -81,3 +81,8 @@ def help_center_category(request):
 
 def withdraw_money(request):
     return render(request, 'transaction/withdraw-money-step-1.html')
+
+def request_search_user(request):
+    return render(request, 'payment_request/search-user.html')
+
+
