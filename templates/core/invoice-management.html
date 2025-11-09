@@ -1,0 +1,713 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}Invoice Management - Virtual Bank{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary: #4f46e5;
+        --primary-dark: #4338ca;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --light-bg: #f8fafc;
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        background-color: var(--light-bg);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* Hero Section */
+    .hero-banner {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .hero-banner h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-banner p {
+        font-size: 1.125rem;
+        opacity: 0.95;
+    }
+
+    /* Stats Cards */
+    .stats-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        height: 100%;
+        transition: transform 0.2s;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .stats-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .stats-icon.blue { background: #dbeafe; color: #2563eb; }
+    .stats-icon.green { background: #d1fae5; color: #059669; }
+    .stats-icon.orange { background: #fed7aa; color: #d97706; }
+    .stats-icon.red { background: #fee2e2; color: #dc2626; }
+
+    .stats-label {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 0.25rem;
+    }
+
+    .stats-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    /* Card Styling */
+    .content-card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 1.5rem;
+    }
+
+    .card-header-custom {
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-header-custom h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.25rem;
+    }
+
+    .card-header-custom p {
+        color: #64748b;
+        font-size: 0.9375rem;
+        margin: 0;
+    }
+
+    /* Form Sections */
+    .form-divider {
+        background: #f1f5f9;
+        height: 1px;
+        margin: 2rem 0;
+    }
+
+    .section-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #334155;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .form-control, .form-select {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-size: 0.9375rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    /* Total Display */
+    .total-box {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border: 2px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .total-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #64748b;
+    }
+
+    .total-amount {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn-custom-primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.875rem 1.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+    }
+
+    .btn-custom-primary:hover {
+        background: var(--primary-dark);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    }
+
+    .btn-custom-secondary {
+        background: white;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        padding: 0.875rem 1.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+    }
+
+    .btn-custom-secondary:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    /* Info Card */
+    .info-banner {
+        background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+        border: 2px solid #fde047;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .info-icon-lg {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+
+    .info-banner h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+    }
+
+    .info-banner p {
+        color: #475569;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+
+    .feature-badge {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .feature-badge svg {
+        color: var(--success);
+        flex-shrink: 0;
+    }
+
+    .feature-badge span {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    /* Invoice Items */
+    .invoice-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        transition: all 0.2s;
+    }
+
+    .invoice-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+    }
+
+    .invoice-number {
+        font-weight: 700;
+        color: #0f172a;
+        font-size: 0.9375rem;
+    }
+
+    .invoice-badge {
+        padding: 0.375rem 0.875rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-paid { background: #d1fae5; color: #065f46; }
+    .badge-pending { background: #fed7aa; color: #92400e; }
+    .badge-overdue { background: #fee2e2; color: #991b1b; }
+
+    .invoice-client {
+        color: #64748b;
+        font-size: 0.9375rem;
+        margin: 0.75rem 0;
+    }
+
+    .invoice-amount {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .invoice-date {
+        font-size: 0.875rem;
+        color: #64748b;
+    }
+
+    .download-btn {
+        background: var(--light-bg);
+        border: 1px solid #e2e8f0;
+        color: #64748b;
+        padding: 0.5rem 0.875rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+    }
+
+    .empty-state svg {
+        color: #cbd5e1;
+        margin-bottom: 1rem;
+    }
+
+    .empty-state h5 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+        color: #94a3b8;
+        font-size: 0.9375rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-banner h1 { font-size: 2rem; }
+        .stats-value { font-size: 1.75rem; }
+        .total-amount { font-size: 1.875rem; }
+        .content-card { padding: 1.5rem; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero-banner">
+    <div class="container">
+        <div class="text-center">
+            <h1>Invoice Management</h1>
+            <p>Create professional invoices in minutes and get paid faster</p>
+        </div>
+    </div>
+</div>
+
+<!-- Main Container -->
+<div class="container pb-5">
+    
+    <!-- Statistics Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div class="stats-icon blue">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                    </svg>
+                </div>
+                <div class="stats-label">Total Invoices</div>
+                <div class="stats-value">{{ total_invoices|default:"0" }}</div>
+            </div>
+        </div>
+        
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div class="stats-icon green">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                </div>
+                <div class="stats-label">Paid</div>
+                <div class="stats-value">{{ paid_invoices|default:"0" }}</div>
+            </div>
+        </div>
+        
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div class="stats-icon orange">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                </div>
+                <div class="stats-label">Pending</div>
+                <div class="stats-value">{{ pending_invoices|default:"0" }}</div>
+            </div>
+        </div>
+        
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div class="stats-icon red">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                    </svg>
+                </div>
+                <div class="stats-label">Overdue</div>
+                <div class="stats-value">{{ overdue_invoices|default:"0" }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="row g-4">
+        
+        <!-- Left Column: Create Invoice Form -->
+        <div class="col-lg-8">
+            <div class="content-card">
+                <div class="card-header-custom">
+                    <h2>Create New Invoice</h2>
+                    <p>Fill in the details below to generate your invoice</p>
+                </div>
+
+                <form method="post" id="invoiceForm">
+                    {% csrf_token %}
+                    
+                    <!-- Client Information -->
+                    <div class="mb-4">
+                        <h3 class="section-title">Client Information</h3>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Client Name <span class="text-danger">*</span></label>
+                                <input type="text" name="client_name" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label">Client Email <span class="text-danger">*</span></label>
+                                <input type="email" name="client_email" class="form-control" placeholder="client@example.com" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" name="client_phone" class="form-control" placeholder="+234 800 000 0000">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" name="client_company" class="form-control" placeholder="Company Ltd">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <!-- Invoice Details -->
+                    <div class="mb-4">
+                        <h3 class="section-title">Invoice Details</h3>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Invoice Date <span class="text-danger">*</span></label>
+                                <input type="date" name="issue_date" id="issueDate" class="form-control" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label">Due Date <span class="text-danger">*</span></label>
+                                <input type="date" name="due_date" id="dueDate" class="form-control" required>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label">Description/Service <span class="text-danger">*</span></label>
+                                <textarea name="description" class="form-control" rows="4" placeholder="Describe the service or product provided..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-divider"></div>
+
+                    <!-- Payment Information -->
+                    <div class="mb-4">
+                        <h3 class="section-title">Payment Information</h3>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Amount <span class="text-danger">*</span></label>
+                                <input type="number" name="amount" id="invoiceAmount" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label">Currency <span class="text-danger">*</span></label>
+                                <select name="currency" id="currencySelect" class="form-select" required>
+                                    <option value="$">USD ($)</option>
+                                    <option value="€">EUR (€)</option>
+                                    <option value="£">GBP (£)</option>
+                                    <option value="₦" selected>NGN (₦)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label">Tax Rate (%)</label>
+                                <input type="number" name="tax" id="taxRate" class="form-control" placeholder="0" step="0.01" min="0" max="100" value="0">
+                            </div>
+                        </div>
+
+                        <!-- Total Display -->
+                        <div class="total-box">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="total-label">Total Amount:</span>
+                                <span class="total-amount" id="totalAmount">₦0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 flex-wrap mt-4">
+                        <button type="submit" class="btn-custom-primary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                            </svg>
+                            Create & Download Invoice
+                        </button>
+                        
+                        <button type="button" class="btn-custom-secondary" data-bs-toggle="modal" data-bs-target="#previewModal">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg>
+                            Preview Invoice
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Column: Info & Recent Invoices -->
+        <div class="col-lg-4">
+            
+            <!-- Info Banner -->
+            <div class="info-banner mb-4">
+                <div class="info-icon-lg">
+                    <svg width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2z"/>
+                    </svg>
+                </div>
+                <h4>Professional Invoicing</h4>
+                <p>Create, track, and manage professional invoices with ease. Get paid faster with automated reminders.</p>
+            </div>
+
+            <!-- Features -->
+            <div class="content-card mb-4">
+                <h5 class="section-title">Key Features</h5>
+                
+                <div class="feature-badge">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg>
+                    <span>Multi-Currency Support</span>
+                </div>
+                
+                <div class="feature-badge">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg>
+                    <span>Email Notifications</span>
+                </div>
+            </div>
+
+            <!-- Recent Invoices -->
+            <div class="content-card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0 fw-bold" style="font-size: 1.125rem; color: #0f172a;">Recent Invoices</h5>
+                    <a href="#" class="text-decoration-none fw-semibold" style="color: var(--primary); font-size: 0.875rem;">View All →</a>
+                </div>
+
+                {% for invoice in recent_invoices %}
+                <div class="invoice-card">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="invoice-number">{{ invoice.invoice_number }}</span>
+                        <span class="invoice-badge badge-{{ invoice.status|lower }}">{{ invoice.status }}</span>
+                    </div>
+                    
+                    <div class="invoice-client">{{ invoice.client_name }}</div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="invoice-amount">{{ invoice.currency }}{{ invoice.total_amount }}</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center pt-2" style="border-top: 1px solid #e2e8f0;">
+                        <span class="invoice-date">Due: {{ invoice.due_date|date:"M d, Y" }}</span>
+                        <button class="download-btn" title="Download Invoice" data-invoice="{{ invoice.invoice_number }}">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">
+                    <svg width="80" height="80" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                    <h5>No invoices yet</h5>
+                    <p>Create your first invoice to get started</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 10px; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+            <div class="modal-header" style="border-bottom: 2px solid #f1f5f9; padding: 1.5rem;">
+                <h5 class="modal-title fw-bold" id="previewModalLabel" style="color: #0f172a;">Invoice Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="padding: 2rem;">
+                <div id="invoicePreview" style="min-height: 400px; background: #f8fafc; border-radius: 8px; padding: 2rem;">
+                    <p class="text-center text-muted">Fill in the form to preview your invoice</p>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: 2px solid #f1f5f9; padding: 1.5rem;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="padding: 0.75rem 1.5rem; border-radius: 8px;">Close</button>
+                <button type="button" class="btn-custom-primary" id="downloadPreviewBtn">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Calculate total with tax
+function calculateTotal() {
+    const amount = parseFloat(document.getElementById('invoiceAmount').value) || 0;
+    const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+    const currency = document.getElementById('currencySelect').value;
+    
+    const taxAmount = (amount * taxRate) / 100;
+    const total = amount + taxAmount;
+    
+    document.getElementById('totalAmount').textContent = currency + total.toFixed(2);
+}
+
+// Initialize dates and listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Set today's date
+    const today = new Date();
+    document.getElementById('issueDate').value = today.toISOString().split('T')[0];
+    
+    // Set due date (30 days from today)
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 30);
+    document.getElementById('dueDate').value = dueDate.toISOString().split('T')[0];
+    
+    // Add event listeners
+    document.getElementById('invoiceAmount').addEventListener('input', calculateTotal);
+    document.getElementById('taxRate').addEventListener('input', calculateTotal);
+    document.getElementById('currencySelect').addEventListener('change', calculateTotal);
+    
+    // Initialize total
+    calculateTotal();
+});
+</script>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/invoice.js' %}"></script>
+{% endblock %}>Instant PDF Generation</span>
+                </div>
+                
+                <div class="feature-badge">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg>
+                    <span>Automatic Tax Calculation</span>
+                </div>
+                
+                <div class="feature-badge">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg>
+                    <span

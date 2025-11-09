@@ -1,0 +1,180 @@
+/* Exchange Page Styles */
+.exchange-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.exchange-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.exchange-header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.exchange-header p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+.exchange-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.currency-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: white;
+}
+
+.form-control[readonly] {
+    background-color: #ecf0f1;
+    cursor: not-allowed;
+}
+
+.swap-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.swap-btn {
+    background: #3498db;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.swap-btn:hover {
+    background: #2980b9;
+    transform: rotate(180deg);
+}
+
+.exchange-rate-display {
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.exchange-rate-display p {
+    margin: 0;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.btn-convert {
+    width: 100%;
+    padding: 15px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-convert:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.btn-convert:active {
+    transform: translateY(0);
+}
+
+.messages {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .exchange-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .exchange-card {
+        padding: 20px;
+    }
+
+    .currency-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .exchange-header h1 {
+        font-size: 1.5rem;
+    }
+}

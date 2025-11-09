@@ -1,0 +1,311 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Banner Section Start -->
+<section class="banner-section inner-banner processing-banner">
+    <div class="overlay">
+        <div class="banner-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="main-content">
+                            <div class="processing-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h2>Processing Your Payment</h2>
+                            <p>Please wait while we securely process your transaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Processing Section Start -->
+<section class="processing-section">
+    <div class="overlay pt-60 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Processing Status -->
+                    <div class="processing-container">
+                        <div class="processing-steps">
+                            <!-- Step 1: Validating -->
+                            <div class="step-item" data-step="1">
+                                <div class="step-icon">
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-check-circle"></i>
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Validating Payment Details</h4>
+                                    <p>Verifying recipient information and payment amount</p>
+                                    <div class="step-status">
+                                        <span class="status-badge pending">
+                                            <i class="fas fa-clock"></i> Pending
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Security Check -->
+                            <div class="step-item" data-step="2">
+                                <div class="step-icon">
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Security Verification</h4>
+                                    <p>Performing fraud detection and security checks</p>
+                                    <div class="step-status">
+                                        <span class="status-badge pending">
+                                            <i class="fas fa-clock"></i> Pending
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Processing -->
+                            <div class="step-item" data-step="3">
+                                <div class="step-icon">
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-credit-card"></i>
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Processing Payment</h4>
+                                    <p>Transferring funds securely to recipient</p>
+                                    <div class="step-status">
+                                        <span class="status-badge pending">
+                                            <i class="fas fa-clock"></i> Pending
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Confirmation -->
+                            <div class="step-item" data-step="4">
+                                <div class="step-icon">
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-check-double"></i>
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Confirming Transaction</h4>
+                                    <p>Sending confirmation to both parties</p>
+                                    <div class="step-status">
+                                        <span class="status-badge pending">
+                                            <i class="fas fa-clock"></i> Pending
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <div class="progress-text">
+                                    <span id="progressPercent">0</span>% Complete
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Details Card -->
+                        <div class="transaction-details-card">
+                            <div class="card-header">
+                                <h4>Transaction Details</h4>
+                                <span class="transaction-id">ID: #TXN-{{ transaction.id|default:"123456789" }}</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-user"></i>
+                                        <span>Recipient</span>
+                                    </div>
+                                    <div class="detail-value">{{ recipient_name|default:"John Doe" }}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>Email</span>
+                                    </div>
+                                    <div class="detail-value">{{ recipient_email|default:"john.doe@example.com" }}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Amount</span>
+                                    </div>
+                                    <div class="detail-value amount">{{ currency|default:"USD" }} {{ amount|default:"500.00" }}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-receipt"></i>
+                                        <span>Transaction Fee</span>
+                                    </div>
+                                    <div class="detail-value">{{ currency|default:"USD" }} {{ fee|default:"7.50" }}</div>
+                                </div>
+                                <div class="detail-row total-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-calculator"></i>
+                                        <span>Total Amount</span>
+                                    </div>
+                                    <div class="detail-value total-amount">{{ currency|default:"USD" }} {{ total|default:"507.50" }}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-wallet"></i>
+                                        <span>Payment Method</span>
+                                    </div>
+                                    <div class="detail-value">{{ payment_method|default:"EazyPay Wallet" }}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Time</span>
+                                    </div>
+                                    <div class="detail-value">{{ timestamp|default:"Nov 9, 2025 - 10:30 AM" }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success/Error State (Hidden by default) -->
+                    <div class="result-container" id="resultContainer" style="display: none;">
+                        <!-- Success State -->
+                        <div class="result-card success-card" id="successCard">
+                            <div class="result-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2>Payment Successful!</h2>
+                            <p class="result-message">Your payment has been processed successfully</p>
+                            
+                            <div class="success-details">
+                                <div class="detail-item">
+                                    <span class="label">Transaction ID</span>
+                                    <span class="value">#TXN-{{ transaction.id|default:"123456789" }}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Amount Sent</span>
+                                    <span class="value">{{ currency|default:"USD" }} {{ amount|default:"500.00" }}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Recipient</span>
+                                    <span class="value">{{ recipient_name|default:"John Doe" }}</span>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <a href="{% url 'core:transaction-details' %}" class="btn btn-primary">
+                                    <i class="fas fa-file-invoice"></i>
+                                    View Receipt
+                                </a>
+                                <a href="{% url 'core:payments' %}" class="btn btn-secondary">
+                                    <i class="fas fa-redo"></i>
+                                    Make Another Payment
+                                </a>
+                                <a href="/" class="btn btn-outline">
+                                    <i class="fas fa-home"></i>
+                                    Go to Dashboard
+                                </a>
+                            </div>
+
+                            <div class="next-steps">
+                                <h5>What's Next?</h5>
+                                <ul>
+                                    <li>
+                                        <i class="fas fa-envelope"></i>
+                                        A confirmation email has been sent to your registered email
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-bell"></i>
+                                        The recipient will be notified about the payment
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-download"></i>
+                                        Download your receipt for your records
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Error State -->
+                        <div class="result-card error-card" id="errorCard" style="display: none;">
+                            <div class="result-icon error">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <h2>Payment Failed</h2>
+                            <p class="result-message error-message" id="errorMessage">
+                                We encountered an issue while processing your payment
+                            </p>
+                            
+                            <div class="error-details">
+                                <div class="error-reason">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span id="errorReason">Insufficient funds in your account</span>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <a href="{% url 'core:payments' %}" class="btn btn-primary">
+                                    <i class="fas fa-redo"></i>
+                                    Try Again
+                                </a>
+                                <a href="{% url 'core:add-funds' %}" class="btn btn-secondary">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Add Funds
+                                </a>
+                                <a href="{% url 'core:help-center' %}" class="btn btn-outline">
+                                    <i class="fas fa-question-circle"></i>
+                                    Get Help
+                                </a>
+                            </div>
+
+                            <div class="help-section">
+                                <h5>Need Assistance?</h5>
+                                <p>Contact our support team for help with your transaction</p>
+                                <div class="contact-options">
+                                    <a href="mailto:support@eazypay.com" class="contact-link">
+                                        <i class="fas fa-envelope"></i>
+                                        support@eazypay.com
+                                    </a>
+                                    <a href="tel:+1234567890" class="contact-link">
+                                        <i class="fas fa-phone"></i>
+                                        +1 (234) 567-890
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Notice -->
+                    <div class="security-notice">
+                        <div class="notice-content">
+                            <i class="fas fa-lock"></i>
+                            <p>Your transaction is secured with 256-bit SSL encryption and protected by our fraud detection system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Processing Section End -->
+
+<!-- Link to external CSS file -->
+<link rel="stylesheet" href="{% static 'assets/css/process-payment.css' %}">
+
+<!-- Link to external JS file -->
+<script src="{% static 'assets/js/process-payment.js' %}"></script>
+
+{% endblock content %}

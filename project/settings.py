@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "core",
     "userauths",
     "account",
+   
 ]
 
 MIDDLEWARE = [

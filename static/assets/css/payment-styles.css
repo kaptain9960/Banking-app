@@ -1,0 +1,539 @@
+/* ===================================
+   Payment Page Custom Styles
+   =================================== */
+
+/* Base Variables */
+:root {
+    --primary-color: #5f27cd;
+    --secondary-color: #764ba2;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --dark-color: #1e2746;
+    --light-color: #f8f9fa;
+    --border-color: #e9ecef;
+    --text-color: #495057;
+    --white: #ffffff;
+}
+
+/* Banner Section */
+.inner-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+    position: relative;
+}
+
+.inner-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/banner-pattern.png') center/cover;
+    opacity: 0.1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.banner-content h2 {
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+.breadcrumb-item a {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--warning-color);
+}
+
+.breadcrumb-item.active {
+    color: var(--white);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0 10px;
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header .sub-title {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.section-header .title {
+    color: var(--dark-color);
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Payment Form Advanced Styles */
+.payment-form-area {
+    position: relative;
+}
+
+.single-input {
+    position: relative;
+}
+
+.single-input.has-icon input {
+    padding-left: 45px;
+}
+
+.single-input .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 38px;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+.single-input input.error,
+.single-input textarea.error,
+.single-input select.error {
+    border-color: var(--danger-color);
+}
+
+.single-input .error-message {
+    color: var(--danger-color);
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.single-input.has-error .error-message {
+    display: block;
+}
+
+/* Nice Select Override */
+.nice-select {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.nice-select:focus {
+    border-color: var(--primary-color);
+}
+
+.nice-select .list {
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.nice-select .option:hover,
+.nice-select .option.focus,
+.nice-select .option.selected.focus {
+    background-color: rgba(95, 39, 205, 0.1);
+    color: var(--primary-color);
+}
+
+/* Payment Method Cards */
+.method-item label {
+    position: relative;
+    overflow: hidden;
+}
+
+.method-item label::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(95, 39, 205, 0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+.method-item input[type="radio"]:checked + label::before {
+    transform: scale(1);
+}
+
+.method-item label::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s;
+}
+
+.method-item input[type="radio"]:checked + label::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Button Styles */
+.cmn-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cmn-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s;
+}
+
+.cmn-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(95, 39, 205, 0.3);
+}
+
+.cmn-btn:hover::before {
+    left: 100%;
+}
+
+.cmn-btn:active {
+    transform: translateY(0);
+}
+
+/* Payment Summary Advanced */
+.payment-summary {
+    position: sticky;
+    top: 100px;
+}
+
+.summary-body {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.balance-info {
+    position: relative;
+    overflow: hidden;
+}
+
+.balance-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.balance-amount {
+    animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Feature Box Advanced */
+.feature-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(95, 39, 205, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.feature-box:hover::before {
+    left: 100%;
+}
+
+.feature-box .icon {
+    position: relative;
+    z-index: 1;
+}
+
+.feature-box .icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s;
+}
+
+.feature-box:hover .icon::after {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Transactions Table */
+.transactions-table {
+    position: relative;
+}
+
+.transactions-table table tbody tr {
+    transition: all 0.3s;
+}
+
+.transactions-table table tbody tr:hover {
+    background: rgba(95, 39, 205, 0.03);
+    transform: scale(1.01);
+}
+
+.transactions-table table tbody tr:hover td {
+    border-color: rgba(95, 39, 205, 0.1);
+}
+
+/* Badge Animations */
+.badge {
+    display: inline-block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--white);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1199px) {
+    .payment-summary {
+        position: static;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .banner-content h2 {
+        font-size: 36px;
+    }
+    
+    .section-header .title {
+        font-size: 28px;
+    }
+    
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+    
+    .transactions-table {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .banner-content h2 {
+        font-size: 28px;
+    }
+    
+    .section-header .title {
+        font-size: 24px;
+    }
+    
+    .feature-box {
+        margin-bottom: 20px;
+    }
+    
+    .balance-amount {
+        font-size: 24px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .payment-form-area,
+    .feature-box,
+    .quick-actions {
+        display: none;
+    }
+    
+    .payment-summary {
+        page-break-inside: avoid;
+    }
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus Styles for Accessibility */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+    .payment-wrapper {
+        background: #2d3748;
+    }
+    
+    .payment-form-area {
+        color: #e2e8f0;
+    }
+    
+    .single-input input,
+    .single-input textarea,
+    .single-input select {
+        background: #1a202c;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .feature-box {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .transactions-table {
+        background: #2d3748;
+    }
+    
+    .transactions-table th,
+    .transactions-table td {
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+}

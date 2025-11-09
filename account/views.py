@@ -64,6 +64,15 @@ def kyc_registration(request):
     return render(request, "account/kyc-form.html", context)           
 
 
+def saved_recipients(request):
+    return render(request, "account/saved-recipients.html")
+
+def crypto(request):
+    return render(request, "account/crypto.html")
+
+def deposit_money(request):
+    return render(request, "account/deposit-money.html")
+
 
 
 

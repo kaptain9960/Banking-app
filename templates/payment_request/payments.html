@@ -1,1 +1,726 @@
-payment page
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Banner Section Start -->
+<section class="banner-section inner-banner">
+    <div class="overlay">
+        <div class="banner-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="main-content">
+                            <h2>Make a Payment</h2>
+                            <div class="breadcrumb-area">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb d-flex align-items-center">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Payment</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Payment Section Start -->
+<section class="payment-section">
+    <div class="overlay pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-header text-center">
+                        <h5 class="sub-title">Secure Payment Gateway</h5>
+                        <h2 class="title">Send Money Instantly</h2>
+                        <p>Transfer funds securely to anyone, anywhere in the world with our encrypted payment system.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="payment-wrapper">
+                        <div class="row g-4">
+                            <!-- Payment Form -->
+                            <div class="col-lg-7">
+                                <div class="payment-form-area">
+                                    <div class="form-header">
+                                        <h4>Payment Details</h4>
+                                        <p>Fill in the information below to complete your transaction</p>
+                                    </div>
+                                    
+                                    <form method="POST" action="{% url 'core:process-payment' %}" id="paymentForm">
+                                        {% csrf_token %}
+                                        
+                                        <!-- Recipient Information -->
+                                        <div class="form-section">
+                                            <h5 class="section-title">Recipient Information</h5>
+                                            
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <label for="recipient_email">Recipient Email or Username</label>
+                                                        <input type="text" name="recipient_email" id="recipient_email" 
+                                                               placeholder="Enter recipient email or username" required>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="recipient_name">Recipient Name</label>
+                                                        <input type="text" name="recipient_name" id="recipient_name" 
+                                                               placeholder="Full name" required>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="recipient_phone">Phone Number (Optional)</label>
+                                                        <input type="tel" name="recipient_phone" id="recipient_phone" 
+                                                               placeholder="+1 234 567 8900">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Payment Amount -->
+                                        <div class="form-section">
+                                            <h5 class="section-title">Payment Amount</h5>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="amount">Amount</label>
+                                                        <input type="number" name="amount" id="amount" 
+                                                               placeholder="0.00" step="0.01" min="1" required>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="currency">Currency</label>
+                                                        <select name="currency" id="currency" class="nice-select">
+                                                            <option value="USD">USD - US Dollar</option>
+                                                            <option value="EUR">EUR - Euro</option>
+                                                            <option value="GBP">GBP - British Pound</option>
+                                                            <option value="NGN">NGN - Nigerian Naira</option>
+                                                            <option value="CAD">CAD - Canadian Dollar</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-12">
+                                                    <div class="single-input">
+                                                        <label for="description">Payment Description</label>
+                                                        <textarea name="description" id="description" rows="3" 
+                                                                  placeholder="What is this payment for?"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Payment Method -->
+                                        <div class="form-section">
+                                            <h5 class="section-title">Payment Method</h5>
+                                            
+                                            <div class="payment-methods">
+                                                <div class="method-item">
+                                                    <input type="radio" name="payment_method" id="wallet" 
+                                                           value="wallet" checked>
+                                                    <label for="wallet">
+                                                        <div class="method-content">
+                                                            <i class="fas fa-wallet"></i>
+                                                            <span>EazyPay Wallet</span>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="method-item">
+                                                    <input type="radio" name="payment_method" id="card" 
+                                                           value="card">
+                                                    <label for="card">
+                                                        <div class="method-content">
+                                                            <i class="fas fa-credit-card"></i>
+                                                            <span>Credit/Debit Card</span>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="method-item">
+                                                    <input type="radio" name="payment_method" id="bank" 
+                                                           value="bank">
+                                                    <label for="bank">
+                                                        <div class="method-content">
+                                                            <i class="fas fa-university"></i>
+                                                            <span>Bank Transfer</span>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Security PIN -->
+                                        <div class="form-section">
+                                            <h5 class="section-title">Security Verification</h5>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="transaction_pin">Transaction PIN</label>
+                                                        <input type="password" name="transaction_pin" 
+                                                               id="transaction_pin" placeholder="Enter 4-digit PIN" 
+                                                               maxlength="4" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-footer">
+                                            <button type="submit" class="cmn-btn w-100">
+                                                Complete Payment
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Summary -->
+                            <div class="col-lg-5">
+                                <div class="payment-summary">
+                                    <div class="summary-header">
+                                        <h4>Payment Summary</h4>
+                                    </div>
+                                    
+                                    <div class="summary-body">
+                                        <div class="balance-info">
+                                            <div class="balance-label">Available Balance</div>
+                                            <div class="balance-amount">$12,450.00</div>
+                                        </div>
+                                        
+                                        <div class="summary-divider"></div>
+                                        
+                                        <div class="summary-items">
+                                            <div class="summary-item">
+                                                <span>Payment Amount</span>
+                                                <span id="summary-amount">$0.00</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span>Transaction Fee</span>
+                                                <span id="summary-fee">$0.00</span>
+                                            </div>
+                                            <div class="summary-divider"></div>
+                                            <div class="summary-item total">
+                                                <span>Total Amount</span>
+                                                <span id="summary-total">$0.00</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="security-badges">
+                                            <div class="badge-item">
+                                                <i class="fas fa-shield-alt"></i>
+                                                <span>256-bit SSL Encrypted</span>
+                                            </div>
+                                            <div class="badge-item">
+                                                <i class="fas fa-lock"></i>
+                                                <span>PCI DSS Compliant</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="quick-actions">
+                                            <h5>Quick Actions</h5>
+                                            <a href="{% url 'core:transaction-history' %}" class="action-link">
+                                                <i class="fas fa-history"></i>
+                                                View Transaction History
+                                            </a>
+                                            <a href="{% url 'core:saved-recipients' %}" class="action-link">
+                                                <i class="fas fa-users"></i>
+                                                Saved Recipients
+                                            </a>
+                                            <a href="{% url 'core:schedule-payment' %}" class="action-link">
+                                                <i class="fas fa-clock"></i>
+                                                Schedule Payment
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="row mt-60">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Instant Transfer</h4>
+                        <p>Send money instantly to anyone with just their email or username</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Secure & Safe</h4>
+                        <p>Bank-level security with encryption and fraud protection</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box text-center">
+                        <div class="icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4>Low Fees</h4>
+                        <p>Competitive rates with transparent pricing and no hidden charges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Payment Section End -->
+
+<!-- Recent Transactions -->
+<section class="recent-transactions">
+    <div class="overlay pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-header text-center">
+                        <h5 class="sub-title">Transaction History</h5>
+                        <h2 class="title">Recent Payments</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="transactions-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Recipient</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nov 8, 2025</td>
+                                    <td>John Doe</td>
+                                    <td>Freelance Payment</td>
+                                    <td>$500.00</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nov 7, 2025</td>
+                                    <td>Jane Smith</td>
+                                    <td>Service Payment</td>
+                                    <td>$250.00</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nov 6, 2025</td>
+                                    <td>Mike Johnson</td>
+                                    <td>Product Purchase</td>
+                                    <td>$1,200.00</td>
+                                    <td><span class="badge badge-pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Payment Section Styles */
+.payment-section {
+    background: #f8f9fa;
+}
+
+.payment-wrapper {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.payment-form-area {
+    padding: 40px;
+}
+
+.form-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+.form-header h4 {
+    margin-bottom: 10px;
+    color: #1e2746;
+    font-weight: 700;
+}
+
+.form-header p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e2746;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.single-input {
+    margin-bottom: 20px;
+}
+
+.single-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+    font-size: 14px;
+}
+
+.single-input input,
+.single-input textarea,
+.single-input select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.single-input input:focus,
+.single-input textarea:focus,
+.single-input select:focus {
+    border-color: #5f27cd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(95, 39, 205, 0.1);
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.method-item {
+    position: relative;
+}
+
+.method-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.method-item label {
+    display: block;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.method-item input[type="radio"]:checked + label {
+    border-color: #5f27cd;
+    background: rgba(95, 39, 205, 0.05);
+}
+
+.method-content i {
+    font-size: 24px;
+    color: #5f27cd;
+    margin-bottom: 10px;
+}
+
+.method-content span {
+    display: block;
+    font-size: 14px;
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-footer {
+    margin-top: 30px;
+}
+
+/* Payment Summary */
+.payment-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: #fff;
+    height: 100%;
+}
+
+.summary-header {
+    padding: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.summary-header h4 {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+}
+
+.summary-body {
+    padding: 30px;
+}
+
+.balance-info {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.summary-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 20px 0;
+}
+
+.summary-items {
+    margin-top: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.summary-item.total {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.security-badges {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.badge-item:last-child {
+    margin-bottom: 0;
+}
+
+.badge-item i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.quick-actions {
+    margin-top: 30px;
+}
+
+.quick-actions h5 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.action-link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.action-link:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.action-link i {
+    margin-right: 12px;
+}
+
+/* Feature Box */
+.feature-box {
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.feature-box .icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.feature-box .icon i {
+    font-size: 30px;
+    color: #fff;
+}
+
+.feature-box h4 {
+    margin-bottom: 15px;
+    color: #1e2746;
+    font-weight: 600;
+}
+
+.feature-box p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Recent Transactions */
+.recent-transactions {
+    background: #fff;
+}
+
+.transactions-table {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.transactions-table table {
+    width: 100%;
+    margin: 0;
+}
+
+.transactions-table thead {
+    background: #f8f9fa;
+}
+
+.transactions-table th {
+    padding: 15px 20px;
+    font-weight: 600;
+    color: #1e2746;
+    border: none;
+}
+
+.transactions-table td {
+    padding: 15px 20px;
+    color: #495057;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .payment-form-area,
+    .summary-body {
+        padding: 30px 20px;
+    }
+    
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Calculate fees and update summary
+document.getElementById('amount').addEventListener('input', function() {
+    const amount = parseFloat(this.value) || 0;
+    const fee = amount * 0.015; // 1.5% transaction fee
+    const total = amount + fee;
+    
+    document.getElementById('summary-amount').textContent = '$' + amount.toFixed(2);
+    document.getElementById('summary-fee').textContent = '$' + fee.toFixed(2);
+    document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+});
+
+// Form validation
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    const pin = document.getElementById('transaction_pin').value;
+    if (pin.length !== 4 || !/^\d+$/.test(pin)) {
+        e.preventDefault();
+        alert('Please enter a valid 4-digit PIN');
+        return false;
+    }
+});
+</script>
+
+{% endblock content %}

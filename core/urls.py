@@ -21,7 +21,8 @@ urlpatterns = [
     # Transaction
     path('transaction/',transaction_list, name='transaction-list' ),
     path('transaction/<transaction_id>',transaction_detail, name='transaction-detail' ),
-    path('withdraw_money/',views.withdraw_money, name='withdraw_money' ),
+    path('withdraw-money/', views.withdraw_money, name='withdraw_money'),
+    path('money-exchange/', views.money_exchange, name='money-exchange'),
 
     # Payment Request
     path('request-search-user/',views.request_search_user, name='request-search-user' ),
@@ -34,6 +35,13 @@ urlpatterns = [
     path('settlement-processing/<account_number>/<transaction_id>/',settlement_processing, name= 'settlement_processing'),
     path('settlement-completed/<account_number>/<transaction_id>/',SettlementCompleted , name='settlement-completed'),
     path('delete-request/<account_number>/<transaction_id>/',delete_payment_request , name='delete-request'),
+    path('process-payment/', views.process_payment, name = "process-payment"),
+    path('transaction-history/', views.transaction_history, name = "transaction-history"),
+    path('saved-recipients/', views.saved_recipients, name = "saved-recipients"),
+    path('schedule-payment/', views.schedule_payment, name = "schedule-payment"),
+    path('transaction-details/', views.transaction_details, name = "transaction-details"),
+    path('add-funds/', views.add_funds, name = "add-funds"),
+
 
     # Credit Card
     path('card/<card_id>/', credit_card_detail, name="card_detail" ),

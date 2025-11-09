@@ -190,27 +190,27 @@
                             </li>
                             <li>
                                 <!-- reference these pages later -->
-                                <a href="money-exchange.html">
+                                <a href="{% url 'core:money-exchange' %}">
                                     <img src="{% static 'assets1/images/icon/exchange.png' %}" alt="Exchange"> <span>Exchange</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="recipients.html">
+                                <a href="{% url 'account:saved-recipients' %}">
                                     <img src="{% static 'assets1/images/icon/recipients.png' %}" alt="Recipients"> <span>Recipients</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="crypto.html">
+                                <a href="{% url 'account:crypto' %}">
                                     <img src="{% static 'assets1/images/icon/crypto.png' %}" alt="Crypto"> <span>Crypto</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="deposit-money.html">
+                                <a href="{% url 'account:deposit-money' %}">
                                     <img src="{% static 'assets1/images/icon/deposit.png' %}" alt="Deposit"> <span>Deposit Money</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="withdraw-money-step-1.html">
+                                <a href="{% url 'core:withdraw_money' %}">
                                     <img src="{% static 'assets1/images/icon/withdraw.png' %}" alt="Withdraw"> <span>Withdraw Money</span>
                                 </a>
                             </li>
@@ -222,12 +222,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a href="{% url 'core:help-center' %}">
                                     <img src="{% static 'assets1/images/icon/support.png' %}" alt="Support"> <span>Support</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a href="{% url 'userauths:sign-up' %}">
                                     <img src="{% static 'assets1/images/icon/quit.png' %}" alt="Quit"> <span>Quit</span>
                                 </a>
                             </li>
